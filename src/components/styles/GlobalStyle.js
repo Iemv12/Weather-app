@@ -22,4 +22,36 @@ export const GlobalStyle = createGlobalStyle`
       --color-primary-font-dark-two: #88869D;
       --color-secondary: #110E3C;
     }
+
+    html {
+      &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #f5f5f5;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar {
+        width: 10px;
+        background-color: #f5f5f5;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-image: -webkit-gradient(
+          linear,
+          left bottom,
+          left top,
+          color-stop(0.44, rgb(122, 153, 217)),
+          color-stop(0.72, rgb(73, 125, 189)),
+          color-stop(0.86, rgb(28, 58, 148))
+        );
+      }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (min-width: 768px) {
+        flex-direction: row;
+      }
+    }
 `;

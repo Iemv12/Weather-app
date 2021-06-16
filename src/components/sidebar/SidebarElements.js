@@ -9,9 +9,12 @@ export const SidebarContainer = styled.aside`
   flex-direction: column;
   overflow: hidden;
   flex: 0.7;
+  position: static;
 
   @media screen and (min-width: 1024px) {
     flex: 0.4;
+    position: sticky;
+    top: 0;
   }
 `;
 
