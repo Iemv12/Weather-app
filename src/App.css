@@ -7,7 +7,4 @@
   .container {
     flex-direction: row;
   }
-  .x {
-    flex: 1;
-  }
 }

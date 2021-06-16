@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  ButtonMyLocation,
   ButtonSearch,
   SidebarContainer,
   TemperatureWeatherCountry,
@@ -14,15 +13,16 @@ import {
 } from "./SidebarElements";
 
 import image from "../../images/Shower.png";
+import { ButtonRound } from "../button";
 
-const index = () => {
+const Sidebar = () => {
   return (
     <SidebarContainer>
       <SidebarHeader>
         <ButtonSearch>Seach for places</ButtonSearch>
-        <ButtonMyLocation>
+        <ButtonRound colorBg="primary" colorFont>
           <span className="material-icons">gps_fixed</span>
-        </ButtonMyLocation>
+        </ButtonRound>
       </SidebarHeader>
       <SidebarWeatherTodayWrapper>
         <SidebarImageWeather>
@@ -43,4 +43,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Sidebar;
