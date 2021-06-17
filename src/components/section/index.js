@@ -2,6 +2,12 @@ import React from "react";
 import { ButtonRound } from "../button";
 import CardClime from "../card_clime";
 import {
+  Humidity,
+  Visibility,
+  WindStatus,
+  AirPresure,
+} from "../content_hightlights";
+import {
   SectionChangeTemperature,
   SectionContainer,
   SectionInformationWrapper,
@@ -31,7 +37,12 @@ const Section = () => {
       </SectionTemperatureNextDays>
       <SectionTodaysHighlights>
         <SectionTitle>Today's Highlights</SectionTitle>
-        <SectionInformationWrapper></SectionInformationWrapper>
+        <SectionInformationWrapper>
+          <WindStatus />
+          <Humidity />
+          <Visibility />
+          <AirPresure />
+        </SectionInformationWrapper>
       </SectionTodaysHighlights>
       <SectionFooter>
         created by{" "}

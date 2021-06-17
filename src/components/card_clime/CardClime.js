@@ -8,7 +8,6 @@ export const CardClimeDay = styled.h1`
 export const CardClimeImage = styled.img`
   width: 56.44px;
   height: 62px;
-  margin: 25px 0;
 `;
 
 export const CardClimeMinMaxTemp = styled.div`

@@ -7,10 +7,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
-  @media screen and (min-width: 1024px) {
-    width: ${({ fullSize }) => (fullSize ? "360px" : "max-content")};
-  }
+  line-height: 60px;
 
   &:hover {
     outline: 1px solid #e7e7eb;

@@ -5,23 +5,29 @@ export const SidebarContainer = styled.aside`
   position: relative;
   padding: 35px 0 20px 0;
   display: flex;
-  height: 100vh;
   flex-direction: column;
   overflow: hidden;
-  flex: 0.7;
   position: static;
+
+  @media screen and (min-width: 768px) {
+    height: 100vh;
+    flex: 0.6;
+    position: sticky;
+    top: 0;
+  }
 
   @media screen and (min-width: 1024px) {
     flex: 0.4;
-    position: sticky;
-    top: 0;
   }
 `;
 
 export const SidebarHeader = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+  }
 `;
 
 export const ButtonSearch = styled.button`

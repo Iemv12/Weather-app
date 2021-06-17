@@ -3,11 +3,14 @@ import styled from "styled-components";
 export const SectionContainer = styled.div`
   background: var(--color-primary-bg);
   color: var(--color-primary-font);
-  padding: 20px 50px;
+  padding: 20px;
+
+  @media (min-width: 640px) {
+    padding: 20px 50px;
+  }
 
   @media screen and (min-width: 768px) {
     flex: 1;
-    padding: 20px 80px;
   }
 `;
 
@@ -55,8 +58,9 @@ export const SectionInformationWrapper = styled.div`
   grid-template-columns: 1fr;
   @media screen and (min-width: 1024px) {
     margin: 40px 0;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   }
+  margin-bottom: 20px;
 `;
 
 export const SectionFooter = styled.footer`
@@ -65,12 +69,13 @@ export const SectionFooter = styled.footer`
   justify-content: center;
   align-items: center;
 
+  font-size: 10px;
+
   a {
     text-decoration: none;
     color: var(--color-primary-font);
     font-weight: 600;
     margin: 0 5px;
-    font-size: 14px;
 
     &:hover {
       opacity: 0.8;
@@ -78,6 +83,17 @@ export const SectionFooter = styled.footer`
 
     &:active {
       opacity: 0.5;
+    }
+  }
+
+  @media screen and (min-width: 640px) {
+    a {
+      font-size: 15px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    a {
+      font-size: 20px;
     }
   }
 `;
