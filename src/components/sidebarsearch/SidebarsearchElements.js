@@ -39,21 +39,34 @@ export const SidebarsearchInput = styled.div`
   margin-bottom: 35px;
 `;
 
-export const SearchInput = styled.input`
+export const SearchInput = styled.div`
   width: 100%;
   height: 48px;
   margin-right: 12px;
-  outline: none;
-  background: transparent;
   border: 1px solid var(--color-primary-button);
   font-weight: 500;
-  padding: 5px 10px;
-  font-size: 16px;
-  color: var(--color-primary-font-dark-two);
-  text-overflow: ellipsis;
-  &:focus {
-    color: var(--color-primary-font);
-    border: 1px solid var(--color-secondary-button);
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-right: 5px;
+    color: var(--color-primary-font-dark-two);
+  }
+
+  input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: var(--color-primary-font-dark-two);
+    text-overflow: ellipsis;
+
+    &:focus {
+      color: var(--color-primary-font);
+    }
   }
 `;
 
@@ -73,6 +86,22 @@ export const SearchButton = styled.button`
 export const SidebarsearchCountriesWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  padding-top: 5px;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #100e1d;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: gray;
+  }
 `;
 
 export const Country = styled.div`
@@ -80,7 +109,7 @@ export const Country = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
-  padding: 15px 5px;
+  padding: 15px 10px;
 
   &:hover {
     outline: 1px solid #e7e7eb;

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useWeather } from "../../contexts/WeatherContext";
 import {
   Country,
   CountryName,
@@ -11,6 +12,28 @@ import {
 } from "./SidebarsearchElements";
 
 const Sidebarsearch = ({ setSearchToggle, className }) => {
+  const { searchCountries } = useWeather();
+
+  const [searchValue, setSearchValue] = useState("");
+  const [countries, setCountries] = useState([]);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchValue(e.target.value);
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+
+    if (searchValue.trim() === "") {
+      alert("Field search is required");
+      return;
+    }
+
+    const data = await searchCountries(searchValue);
+    setCountries(data);
+  };
+
   return (
     <SidebarsearchContainer className={className}>
       <SidebarsearchClose>
@@ -19,22 +42,23 @@ const Sidebarsearch = ({ setSearchToggle, className }) => {
         </span>
       </SidebarsearchClose>
       <SidebarsearchInput>
-        <SearchInput placeholder="Search Country" />
-        <SearchButton> Search </SearchButton>
+        <SearchInput>
+          <span className="material-icons">search</span>
+          <input placeholder="Search countries" onChange={handleChange} />
+        </SearchInput>
+        <SearchButton onClick={handleClick}> Search </SearchButton>
       </SidebarsearchInput>
       <SidebarsearchCountriesWrapper>
-        <Country>
-          <CountryName>London</CountryName>
-          <span className="material-icons">chevron_right</span>
-        </Country>
-        <Country>
-          <CountryName>New York</CountryName>
-          <span className="material-icons">chevron_right</span>
-        </Country>
-        <Country>
-          <CountryName>Santo Domingo</CountryName>
-          <span className="material-icons">chevron_right</span>
-        </Country>
+        {countries ? (
+          countries.map((country, index) => (
+            <Country key={index}>
+              <CountryName>{country.title}</CountryName>
+              <span className="material-icons">chevron_right</span>
+            </Country>
+          ))
+        ) : (
+          <p>No countries</p>
+        )}
       </SidebarsearchCountriesWrapper>
     </SidebarsearchContainer>
   );
