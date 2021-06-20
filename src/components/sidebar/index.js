@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ButtonSearch,
   SidebarContainer,
@@ -14,12 +14,23 @@ import {
 
 import image from "../../images/Shower.png";
 import { ButtonRound } from "../button";
+import Sidebarsearch from "../sidebarsearch";
 
 const Sidebar = () => {
+  const [searchToggle, setSearchToggle] = useState(false);
+
+  const handlerToggle = () => {
+    setSearchToggle((value) => !value);
+  };
+
   return (
     <SidebarContainer>
+      <Sidebarsearch
+        className={searchToggle ? "mountedStyle" : "unMountedStyle"}
+        setSearchToggle={handlerToggle}
+      />
       <SidebarHeader>
-        <ButtonSearch>Seach for places</ButtonSearch>
+        <ButtonSearch onClick={handlerToggle}>Seach for places</ButtonSearch>
         <ButtonRound colorBg="primary" colorFont>
           <span className="material-icons">gps_fixed</span>
         </ButtonRound>

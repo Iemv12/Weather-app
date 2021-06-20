@@ -7,8 +7,7 @@ export const SidebarContainer = styled.aside`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  position: static;
-
+  z-index: 2;
   @media screen and (min-width: 768px) {
     height: 100vh;
     flex: 0.6;

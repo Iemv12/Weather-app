@@ -52,4 +52,34 @@ export const GlobalStyle = createGlobalStyle`
         flex-direction: row;
       }
     }
+
+    .mountedStyle{
+      animation: inAnimation 250ms ease-in;
+    }
+
+    .unMountedStyle {
+      animation: outAnimation 270ms ease-out;
+      animation-fill-mode: forwards
+    }
+
+    @keyframes inAnimation {
+      0% {
+        opacity: 0;
+        visibility: hidden;
+      }
+      100% {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    @keyframes outAnimation {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
 `;
