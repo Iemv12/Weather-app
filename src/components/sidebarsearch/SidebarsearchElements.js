@@ -39,7 +39,7 @@ export const SidebarsearchInput = styled.div`
   margin-bottom: 35px;
 `;
 
-export const SearchInput = styled.div`
+export const SearchInput = styled.form`
   width: 100%;
   height: 48px;
   margin-right: 12px;

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useWeather } from "../../contexts/WeatherContext";
 import { ButtonRound } from "../button";
 import CardClime from "../card_clime";
 import {
@@ -18,6 +19,8 @@ import {
 } from "./SectionElements";
 
 const Section = () => {
+  const { country } = useWeather();
+
   return (
     <SectionContainer>
       <SectionChangeTemperature>

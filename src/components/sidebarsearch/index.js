@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useWeather } from "../../contexts/WeatherContext";
+// import Spinner from "../spinner";
 import {
   Country,
   CountryName,
@@ -12,10 +13,10 @@ import {
 } from "./SidebarsearchElements";
 
 const Sidebarsearch = ({ setSearchToggle, className }) => {
-  const { searchCountries } = useWeather();
+  const { searchCountries, setWoeid } = useWeather();
 
   const [searchValue, setSearchValue] = useState("");
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState(null);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -31,7 +32,12 @@ const Sidebarsearch = ({ setSearchToggle, className }) => {
     }
 
     const data = await searchCountries(searchValue);
-    setCountries(data);
+    setCountries(data || []);
+  };
+
+  const seachCountry = (woeid) => {
+    setWoeid(woeid);
+    setSearchToggle();
   };
 
   return (
@@ -49,16 +55,18 @@ const Sidebarsearch = ({ setSearchToggle, className }) => {
         <SearchButton onClick={handleClick}> Search </SearchButton>
       </SidebarsearchInput>
       <SidebarsearchCountriesWrapper>
-        {countries ? (
+        {/* {loading && !countries && <Spinner />} */}
+        {countries && countries.length === 0 && (
+          <p style={{ textAlign: "center" }}>Countries not found</p>
+        )}
+        {countries &&
+          countries.length > 0 &&
           countries.map((country, index) => (
-            <Country key={index}>
+            <Country key={index} onClick={() => seachCountry(country.woeid)}>
               <CountryName>{country.title}</CountryName>
               <span className="material-icons">chevron_right</span>
             </Country>
-          ))
-        ) : (
-          <p>No countries</p>
-        )}
+          ))}
       </SidebarsearchCountriesWrapper>
     </SidebarsearchContainer>
   );

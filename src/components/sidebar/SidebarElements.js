@@ -85,7 +85,7 @@ export const TemperatureWeatherState = styled.p`
 
 export const TemperatureWeatherDate = styled.p`
   font-weight: 500;
-  font-size: 15px;
+  font-size: 18px;
   color: var(--color-primary-font-dark-one);
   margin: 35px 0;
 `;

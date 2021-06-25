@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import moment from "moment";
 import {
   ButtonSearch,
   SidebarContainer,
@@ -11,12 +12,14 @@ import {
   TemperatureWeatherTemp,
   SidebarImageTemp,
 } from "./SidebarElements";
-
-import image from "../../images/Shower.png";
 import { ButtonRound } from "../button";
 import Sidebarsearch from "../sidebarsearch";
+import { useWeather } from "../../contexts/WeatherContext";
+import { WEATHER_STATUS } from "../../utils/constants";
 
 const Sidebar = () => {
+  const { country } = useWeather();
+
   const [searchToggle, setSearchToggle] = useState(false);
 
   const handlerToggle = () => {
@@ -35,21 +38,40 @@ const Sidebar = () => {
           <span className="material-icons">gps_fixed</span>
         </ButtonRound>
       </SidebarHeader>
-      <SidebarWeatherTodayWrapper>
-        <SidebarImageWeather>
-          <SidebarImageTemp src={image} />
-        </SidebarImageWeather>
-        <TemperatureWeatherTemp>
-          {" "}
-          15<span>℃</span>
-        </TemperatureWeatherTemp>
-        <TemperatureWeatherState>Shower</TemperatureWeatherState>
-        <TemperatureWeatherDate>Today . Fri, 5 Jun.</TemperatureWeatherDate>
-        <TemperatureWeatherCountry>
-          <span className="material-icons">location_on</span>
-          Helsinki
-        </TemperatureWeatherCountry>
-      </SidebarWeatherTodayWrapper>
+      {country && (
+        <>
+          <SidebarWeatherTodayWrapper>
+            <SidebarImageWeather>
+              <SidebarImageTemp
+                src={
+                  WEATHER_STATUS[
+                    country.consolidated_weather[0].weather_state_abbr
+                  ]
+                }
+              />
+            </SidebarImageWeather>
+            <TemperatureWeatherTemp>
+              {" "}
+              {Math.round(country.consolidated_weather[0].the_temp)}
+              <span>℃</span>
+            </TemperatureWeatherTemp>
+            <TemperatureWeatherState>
+              {country.consolidated_weather[0].weather_state_name}
+            </TemperatureWeatherState>
+            <TemperatureWeatherDate>
+              Today .{" "}
+              {moment(country.consolidated_weather[0].applicable_date).format(
+                "ddd, DD MMM"
+              )}
+              .
+            </TemperatureWeatherDate>
+            <TemperatureWeatherCountry>
+              <span className="material-icons">location_on</span>
+              {country.title}
+            </TemperatureWeatherCountry>
+          </SidebarWeatherTodayWrapper>
+        </>
+      )}
     </SidebarContainer>
   );
 };

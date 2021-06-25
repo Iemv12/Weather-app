@@ -1,10 +1,19 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
-import { getCountriesApi } from "../api/Weather";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { getCountriesApi, getCountryApi } from "../api/Weather";
 
 const WeatherContext = createContext({
   country: {},
+  woeid: null,
+  loading: null,
   searchCountries: () => null,
   selectCountry: () => null,
+  setWoeid: () => null,
 });
 
 export const useWeather = () => {
@@ -12,24 +21,37 @@ export const useWeather = () => {
 };
 
 export const WeatherProvider = ({ children }) => {
-  const [country, setCountry] = useState({});
+  const [country, setCountry] = useState(null);
+  const [woeid, setWoeid] = useState(116545);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    selectCountry(woeid);
+  }, [woeid]);
 
   const searchCountries = async (value) => {
+    setLoading(true);
     const data = await getCountriesApi(value);
+    setLoading(false);
     return data;
   };
 
   const selectCountry = async (value) => {
-    setCountry(value);
+    setLoading(true);
+    const data = await getCountryApi(value);
+    setLoading(false);
+    setCountry(data || {});
   };
 
   const value = useMemo(
     () => ({
       country,
+      woeid,
+      loading,
       searchCountries,
-      selectCountry,
+      setWoeid,
     }),
-    [country]
+    [country, woeid]
   );
 
   return (
