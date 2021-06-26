@@ -31,7 +31,7 @@ export const WeatherProvider = ({ children }) => {
   const [country, setCountry] = useState({});
   const [woeid, setWoeid] = useState(116545);
   const [loading, setLoading] = useState(false);
-  const [changeTemp, setChangeTemp] = useState(false);
+  const [changeTemp, setChangeTemp] = useState(true);
 
   useEffect(() => {
     selectCountry(woeid);

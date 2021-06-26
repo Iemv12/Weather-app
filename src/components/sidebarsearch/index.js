@@ -37,6 +37,7 @@ const Sidebarsearch = ({ setSearchToggle, className }) => {
   };
 
   const seachCountry = (woeid) => {
+    setCountries(null);
     setWoeid(woeid);
     setSearchToggle();
   };
