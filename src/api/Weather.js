@@ -25,3 +25,16 @@ export const getCountryApi = async (countryId) => {
     console.log(err);
   }
 };
+
+export const getCountryLocationApi = async (location) => {
+  try {
+    const { data } = await axiosInstance.get(
+      `/location/search/?lattlong=${location.coords.latitude.toFixed(
+        2
+      )},${location.coords.longitude.toFixed(2)}`
+    );
+    return data[0];
+  } catch (err) {
+    console.log(err);
+  }
+};

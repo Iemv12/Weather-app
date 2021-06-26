@@ -5,7 +5,11 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { getCountriesApi, getCountryApi } from "../api/Weather";
+import {
+  getCountriesApi,
+  getCountryApi,
+  getCountryLocationApi,
+} from "../api/Weather";
 
 const WeatherContext = createContext({
   country: null,
@@ -13,6 +17,7 @@ const WeatherContext = createContext({
   loading: null,
   changeTemp: null,
   searchCountries: () => null,
+  myLocation: () => null,
   selectCountry: () => null,
   setWoeid: () => null,
   setChangeTemp: () => null,
@@ -37,6 +42,17 @@ export const WeatherProvider = ({ children }) => {
     return data;
   };
 
+  const myLocation = async () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const data = await getCountryLocationApi(position);
+        setWoeid(data.woeid);
+      });
+    } else {
+      alert("Geolocation is not supported");
+    }
+  };
+
   const selectCountry = async (value) => {
     setLoading(true);
     const data = await getCountryApi(value);
@@ -51,6 +67,7 @@ export const WeatherProvider = ({ children }) => {
       loading,
       changeTemp,
       searchCountries,
+      myLocation,
       setWoeid,
       setChangeTemp,
     }),

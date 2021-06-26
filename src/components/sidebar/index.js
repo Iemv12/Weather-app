@@ -19,7 +19,7 @@ import { WEATHER_STATUS } from "../../utils/constants";
 import { celciusToFahrenheit } from "../../utils/helpers";
 
 const Sidebar = () => {
-  const { country, loading, changeTemp } = useWeather();
+  const { country, loading, changeTemp, myLocation } = useWeather();
 
   const [searchToggle, setSearchToggle] = useState(false);
 
@@ -39,7 +39,7 @@ const Sidebar = () => {
             <ButtonSearch onClick={handlerToggle}>
               Seach for places
             </ButtonSearch>
-            <ButtonRound colorBg="primary" colorFont>
+            <ButtonRound colorBg="primary" colorFont onClick={myLocation}>
               <span className="material-icons">gps_fixed</span>
             </ButtonRound>
           </SidebarHeader>
@@ -62,7 +62,7 @@ const Sidebar = () => {
                       country.consolidated_weather[0].the_temp
                     )
                   )}
-              {changeTemp ? <span>℃</span> : <span>F</span>}
+              {changeTemp ? <span>°C</span> : <span>°F</span>}
             </TemperatureWeatherTemp>
             <TemperatureWeatherState>
               {country.consolidated_weather[0].weather_state_name}
