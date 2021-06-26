@@ -16,9 +16,10 @@ import { ButtonRound } from "../button";
 import Sidebarsearch from "../sidebarsearch";
 import { useWeather } from "../../contexts/WeatherContext";
 import { WEATHER_STATUS } from "../../utils/constants";
+import { celciusToFahrenheit } from "../../utils/helpers";
 
 const Sidebar = () => {
-  const { country, loading } = useWeather();
+  const { country, loading, changeTemp } = useWeather();
 
   const [searchToggle, setSearchToggle] = useState(false);
 
@@ -54,8 +55,14 @@ const Sidebar = () => {
             </SidebarImageWeather>
             <TemperatureWeatherTemp>
               {" "}
-              {Math.round(country.consolidated_weather[0].the_temp)}
-              <span>℃</span>
+              {changeTemp
+                ? Math.round(country.consolidated_weather[0].the_temp)
+                : Math.round(
+                    celciusToFahrenheit(
+                      country.consolidated_weather[0].the_temp
+                    )
+                  )}
+              {changeTemp ? <span>℃</span> : <span>F</span>}
             </TemperatureWeatherTemp>
             <TemperatureWeatherState>
               {country.consolidated_weather[0].weather_state_name}

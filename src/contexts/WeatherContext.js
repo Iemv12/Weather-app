@@ -11,9 +11,11 @@ const WeatherContext = createContext({
   country: null,
   woeid: null,
   loading: null,
+  changeTemp: null,
   searchCountries: () => null,
   selectCountry: () => null,
   setWoeid: () => null,
+  setChangeTemp: () => null,
 });
 
 export const useWeather = () => {
@@ -24,6 +26,7 @@ export const WeatherProvider = ({ children }) => {
   const [country, setCountry] = useState({});
   const [woeid, setWoeid] = useState(116545);
   const [loading, setLoading] = useState(false);
+  const [changeTemp, setChangeTemp] = useState(false);
 
   useEffect(() => {
     selectCountry(woeid);
@@ -46,10 +49,12 @@ export const WeatherProvider = ({ children }) => {
       country,
       woeid,
       loading,
+      changeTemp,
       searchCountries,
       setWoeid,
+      setChangeTemp,
     }),
-    [country, woeid, loading]
+    [country, woeid, loading, changeTemp]
   );
 
   return (

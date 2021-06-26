@@ -20,18 +20,24 @@ import {
 } from "./SectionElements";
 
 const Section = () => {
-  const { country, loading } = useWeather();
-  console.log(country);
+  const { country, loading, setChangeTemp } = useWeather();
 
   return (
     <SectionContainer>
       {Object.keys(country).length > 0 && !loading && (
         <>
           <SectionChangeTemperature>
-            <ButtonRound colorBg="secondary">
+            <ButtonRound
+              colorBg="secondary"
+              onClick={() => setChangeTemp(true)}
+            >
               <p>℃</p>
             </ButtonRound>
-            <ButtonRound colorBg="third" colorFont>
+            <ButtonRound
+              colorBg="third"
+              colorFont
+              onClick={() => setChangeTemp(false)}
+            >
               <p>℉</p>
             </ButtonRound>
           </SectionChangeTemperature>
