@@ -18,7 +18,6 @@ export const WindStatusCompass = styled.div`
 
   span {
     font-size: 25px;
-    transform: rotate(-150deg);
   }
 `;
 

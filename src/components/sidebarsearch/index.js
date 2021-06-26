@@ -32,6 +32,7 @@ const Sidebarsearch = ({ setSearchToggle, className }) => {
     }
 
     const data = await searchCountries(searchValue);
+    setSearchValue("");
     setCountries(data || []);
   };
 
@@ -50,7 +51,11 @@ const Sidebarsearch = ({ setSearchToggle, className }) => {
       <SidebarsearchInput>
         <SearchInput>
           <span className="material-icons">search</span>
-          <input placeholder="Search countries" onChange={handleChange} />
+          <input
+            placeholder="Search countries"
+            value={searchValue}
+            onChange={handleChange}
+          />
         </SearchInput>
         <SearchButton onClick={handleClick}> Search </SearchButton>
       </SidebarsearchInput>

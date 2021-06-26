@@ -8,7 +8,7 @@ import React, {
 import { getCountriesApi, getCountryApi } from "../api/Weather";
 
 const WeatherContext = createContext({
-  country: {},
+  country: null,
   woeid: null,
   loading: null,
   searchCountries: () => null,
@@ -21,7 +21,7 @@ export const useWeather = () => {
 };
 
 export const WeatherProvider = ({ children }) => {
-  const [country, setCountry] = useState(null);
+  const [country, setCountry] = useState({});
   const [woeid, setWoeid] = useState(116545);
   const [loading, setLoading] = useState(false);
 
@@ -30,9 +30,7 @@ export const WeatherProvider = ({ children }) => {
   }, [woeid]);
 
   const searchCountries = async (value) => {
-    setLoading(true);
     const data = await getCountriesApi(value);
-    setLoading(false);
     return data;
   };
 
@@ -51,7 +49,7 @@ export const WeatherProvider = ({ children }) => {
       searchCountries,
       setWoeid,
     }),
-    [country, woeid]
+    [country, woeid, loading]
   );
 
   return (

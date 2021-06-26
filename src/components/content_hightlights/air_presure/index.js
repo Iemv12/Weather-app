@@ -2,12 +2,13 @@ import React from "react";
 import { CardContainer } from "../../card";
 import { ContentTitle, ContentValue } from "../content_shared";
 
-const AirPresure = () => {
+const AirPresure = ({ airPresureValue }) => {
   return (
     <CardContainer>
       <ContentTitle>Air Presure</ContentTitle>
       <ContentValue>
-        998 <span>mb</span>
+        {Math.round(airPresureValue)}
+        <span>mb</span>
       </ContentValue>
     </CardContainer>
   );

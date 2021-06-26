@@ -2,12 +2,12 @@ import React from "react";
 import { CardContainer } from "../../card";
 import { ContentTitle, ContentValue } from "../content_shared";
 
-const Visibility = () => {
+const Visibility = ({ visibilityValue }) => {
   return (
     <CardContainer>
       <ContentTitle>Visibility</ContentTitle>
       <ContentValue>
-        6,4 <span>miles</span>
+        {visibilityValue.toFixed(1)} <span>miles</span>
       </ContentValue>
     </CardContainer>
   );

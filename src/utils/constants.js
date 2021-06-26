@@ -9,7 +9,7 @@ import sleet from "../images/Sleet.png";
 import snow from "../images/Snow.png";
 import thunderstorm from "../images/Thunderstorm.png";
 
-const CORS_URL = "https://api.allorigins.win/raw?url=";
+const CORS_URL = "https://cors-anywhere.herokuapp.com/";
 const PATH_URL = `${CORS_URL}https://www.metaweather.com/api`;
 
 const WEATHER_STATUS = {

@@ -7,18 +7,23 @@ import {
   WindStatusDirectionWrapper,
 } from "./WindStatusElements";
 
-const WindStatus = () => {
+const WindStatus = ({ windSpeed, windDirectionCompass, windDirection }) => {
   return (
     <CardContainer>
       <ContentTitle>Wind Status</ContentTitle>
       <ContentValue>
-        7 <span>Mph</span>
+        {Math.round(windSpeed)} <span>Mph</span>
       </ContentValue>
       <WindStatusDirectionWrapper>
         <WindStatusCompass>
-          <span className="material-icons">navigation</span>
+          <span
+            className="material-icons"
+            style={{ transform: `rotate(${windDirection}deg)` }}
+          >
+            navigation
+          </span>
         </WindStatusCompass>
-        <WindStatusDirection>WSW</WindStatusDirection>
+        <WindStatusDirection>{windDirectionCompass}</WindStatusDirection>
       </WindStatusDirectionWrapper>
     </CardContainer>
   );

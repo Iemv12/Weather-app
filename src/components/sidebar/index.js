@@ -18,7 +18,7 @@ import { useWeather } from "../../contexts/WeatherContext";
 import { WEATHER_STATUS } from "../../utils/constants";
 
 const Sidebar = () => {
-  const { country } = useWeather();
+  const { country, loading } = useWeather();
 
   const [searchToggle, setSearchToggle] = useState(false);
 
@@ -28,18 +28,20 @@ const Sidebar = () => {
 
   return (
     <SidebarContainer>
-      <Sidebarsearch
-        className={searchToggle ? "mountedStyle" : "unMountedStyle"}
-        setSearchToggle={handlerToggle}
-      />
-      <SidebarHeader>
-        <ButtonSearch onClick={handlerToggle}>Seach for places</ButtonSearch>
-        <ButtonRound colorBg="primary" colorFont>
-          <span className="material-icons">gps_fixed</span>
-        </ButtonRound>
-      </SidebarHeader>
-      {country && (
+      {Object.keys(country).length > 0 && !loading && (
         <>
+          <Sidebarsearch
+            className={searchToggle ? "mountedStyle" : "unMountedStyle"}
+            setSearchToggle={handlerToggle}
+          />
+          <SidebarHeader>
+            <ButtonSearch onClick={handlerToggle}>
+              Seach for places
+            </ButtonSearch>
+            <ButtonRound colorBg="primary" colorFont>
+              <span className="material-icons">gps_fixed</span>
+            </ButtonRound>
+          </SidebarHeader>
           <SidebarWeatherTodayWrapper>
             <SidebarImageWeather>
               <SidebarImageTemp

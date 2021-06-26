@@ -6,17 +6,22 @@ import {
   MaxTemp,
   MinTemp,
 } from "./CardClime";
-import Image from "../../images/Shower.png";
 import { CardContainer } from "../card";
+import { WEATHER_STATUS } from "../../utils/constants";
+import moment from "moment";
 
-const CardClime = () => {
+const CardClime = ({ item, index }) => {
   return (
     <CardContainer>
-      <CardClimeDay>Tomorrow</CardClimeDay>
-      <CardClimeImage src={Image} />
+      <CardClimeDay>
+        {index === 1
+          ? "Tommorow"
+          : moment(item.applicable_date).format("ddd, DD MMM")}
+      </CardClimeDay>
+      <CardClimeImage src={WEATHER_STATUS[item.weather_state_abbr]} />
       <CardClimeMinMaxTemp>
-        <MaxTemp>16°C</MaxTemp>
-        <MinTemp>11°C</MinTemp>
+        <MaxTemp>{Math.round(item.max_temp)}°C</MaxTemp>
+        <MinTemp>{Math.round(item.min_temp)}°C</MinTemp>
       </CardClimeMinMaxTemp>
     </CardContainer>
   );

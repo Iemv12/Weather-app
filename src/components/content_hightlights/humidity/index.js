@@ -8,14 +8,12 @@ import {
   PercentageValue,
 } from "./HumidityElements";
 
-const Humidity = () => {
-  const value = 40;
-
+const Humidity = ({ humidityValue }) => {
   return (
     <CardContainer>
       <ContentTitle>Humidity</ContentTitle>
       <ContentValue>
-        84 <span>%</span>
+        {Math.round(humidityValue)} <span>%</span>
       </ContentValue>
       <HumidityPercentage>
         <PercentageValue>
@@ -24,7 +22,10 @@ const Humidity = () => {
           <span>100</span>
         </PercentageValue>
         <PercentageBar>
-          <div className="value" style={{ width: `${value}%` }}></div>
+          <div
+            className="value"
+            style={{ width: `${Math.round(humidityValue)}%` }}
+          ></div>
         </PercentageBar>
         <Percentage>%</Percentage>
       </HumidityPercentage>
