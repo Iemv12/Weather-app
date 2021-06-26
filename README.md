@@ -8,11 +8,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://weather-app-k77yagq9t-iemv12.vercel.app">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://github.com/iemv12/weather-app">
       Solution
     </a>
     <span> | </span>
@@ -37,22 +37,15 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
-
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+![Screenshot 2021-06-26 152144](https://user-images.githubusercontent.com/61206377/123527389-1da57100-d6ad-11eb-9bb3-dd6210f515da.png)
 
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [React](https://reactjs.org/)
-- [Vue.js](https://vuejs.org/)
-- [Tailwind](https://tailwindcss.com/)
+- [Styled Components](https://styled-components.com/)
+- [MetaWeatherApi](https://www.metaweather.com/api/)
 
 ## Features
 
@@ -60,21 +53,35 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv) was to build an application to complete the given user stories.
 
+- [x] User story: I can see city weather as default, preferably my current location
+- [x] User story: I can search for city
+- [x] User story: I can see weather of today and the next 5 days
+- [x] User story: I can see the date and location of the weather
+- [x] User story: I can see according to image for each type of weather
+- [x] User story: I can see the min and max degree each day
+- [x] User story: I can see wind status and wind direction
+- [x] User story: I can see humidity percentage
+- [x] User story: I can see a visibility indicator
+- [x] User story: I can see the air pressure number
+- [x] User story(optional): I can request my current location wea
+- [x] User story(optional): I can convert temperature in Celcius to Fahrenheit and vice versa
+
+
 ## How To Use
 
 <!-- Example: -->
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [yarn](https://yarnpkg.com/)) installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/iemv12/weather-app
 
 # Install dependencies
-$ npm install
+$ yarn
 
 # Run the app
-$ npm start
+$ yarn start
 ```
 
 ## Acknowledgements
@@ -87,6 +94,4 @@ $ npm start
 
 ## Contact
 
-- Website [your-website.com](https://{your-web-site-link})
-- GitHub [@your-username](https://{github.com/your-usermame})
-- Twitter [@your-twitter](https://{twitter.com/your-username})
+- GitHub [@iemv12](https://github.com/iemv12)
