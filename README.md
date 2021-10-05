@@ -94,4 +94,4 @@ $ yarn start
 
 ## Contact
 
-- GitHub [@iemv12](https://github.com/iemv12)
+- GitHub [@iiimatos](https://github.com/iiimatos)
